@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+# define SUCCESS	0
+# define FAIL		1
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -13,7 +15,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		n--;
 	}
 	if (n == 0)
-		return (0);
+		return (SUCCESS);
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
@@ -41,16 +43,16 @@ int check_file_extension(char *file_name)
 	if (len < 5 || ft_strncmp(file_name + (len - 4), ext, 4) != 0)
 	{
 		printf("Error\nInvalid File Extension\n");
-		return (1);
+		return (FAIL);
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 
 int	main(int argc, char *argv[])
 {
 	if (check_file_extension(argv[1]) == 1)
-		return (0);
+		return (FAIL);
 
 	return (0);
 }
