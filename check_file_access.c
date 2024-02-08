@@ -23,6 +23,6 @@ int	main(int argc, char *argv[])
 {
 	if (check_file_access(argv[1]) == FAIL)
 		return (FAIL);
-	
+
 	return (0);
 }

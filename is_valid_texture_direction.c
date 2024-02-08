@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-#define SUCCESS 0
-#define FAIL    1
+#define SUCCESS	0
+#define FAIL	1
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
@@ -40,9 +40,11 @@ int	ft_tablen(char **tab)
 int	is_valid_texture_direction(char *str, char **tab)
 {
 	int	tab_len;
+	int	path_len;
 
 	tab_len = ft_tablen(tab);
-	if (tab_len < 2 || ft_strcmp(tab[0], str) != 0 || (tab[1][0] != '.' || tab[1][1] != '/'))
+	if (tab_len < 2 || ft_strcmp(tab[0], str) != 0 || \
+	ft_strlen(tab[1]) <= 2 || (tab[1][0] != '.' || tab[1][1] != '/'))
 		return (FAIL);
 	return (SUCCESS);
 }
@@ -50,6 +52,7 @@ int	is_valid_texture_direction(char *str, char **tab)
 int	main()
 {
 	char *tableau[] = {"NO", "./path_texture_no", NULL};
+	// char *tableau[] = {"NO", "./", NULL};
 	// char *tableau[] = {"NO", NULL};
 
 	if (is_valid_texture_direction("NO", tableau) == 1)
@@ -61,3 +64,7 @@ int	main()
 	return (0);
 
 }
+
+//NO ./path_to_the_north_texture
+
+//"F", "233,534,545"
